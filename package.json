@@ -1,0 +1,24 @@
+{
+  "name": "regular-expression-tools",
+  "version": "1.0.0",
+  "description": "controll regular expression to handle text...",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lqfxz520/myNpm.git"
+  },
+  "keywords": [
+    "regular",
+    "javascript"
+  ],
+  "author": "lqfxz520",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lqfxz520/myNpm/issues"
+  },
+  "homepage": "https://github.com/lqfxz520/myNpm#readme"
+}
