@@ -1,5 +1,5 @@
 ### learn to create my first npm package
 
-- [] npm init
-- [] todo... example: regular expression tool
-- [] try to push npm
+-   [x] npm init
+-   [x] todo... example: regular expression tool
+-   [x] try to publish npm

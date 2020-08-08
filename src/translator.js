@@ -1,4 +1,4 @@
-const reg = /(Y{1,4}|M{1,2}|D{1,2}|d{1,2}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|S{1,3})/g
+const reg = /(YY(?:YY)?|M{1,2}|D{1,2}|d{1,2}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|S{1,3})/g
 
 function formateTime(timeStamp, template = 'YYYY-MM-DD') {
     const dateObj = new Date(timeStamp)
@@ -23,9 +23,7 @@ function formateTime(timeStamp, template = 'YYYY-MM-DD') {
 function translateCase(s, dateObj) {
     let timeValue = ''
     switch (s) {
-        case 'Y':
         case 'YY':
-        case 'YYY':
         case 'YYYY':
             timeValue = dateObj.getFullYear()
             break
@@ -69,4 +67,17 @@ function translateCase(s, dateObj) {
     return timeValue
 }
 
-export default formateTime
+/**
+ * resolve url like ?a=b&c=d
+ * translate Json.
+ **/
+function translateUrl(url) {
+    const re = /(?=[^?&#])(\w*)=([^?&#]*)/g
+    const obj = {}
+    url.replace(re, function (match, p1, p2) {
+        obj[p1] = p2
+    })
+    return obj
+}
+export { formateTime, translateUrl }
+
