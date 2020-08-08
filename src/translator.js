@@ -1,4 +1,4 @@
-const reg = /(YY(?:YY)?|M{1,2}|D{1,2}|d{1,2}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|S{1,3})/g
+const reg = /(YY(?:YY)?|M{2,2}|D{1,2}|d{1,2}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|S{1,3})/g
 
 function formateTime(timeStamp, template = 'YYYY-MM-DD') {
     const dateObj = new Date(timeStamp)
@@ -74,9 +74,14 @@ function translateCase(s, dateObj) {
 function translateUrl(url) {
     const re = /(?=[^?&#])(\w*)=([^?&#]*)/g
     const obj = {}
-    url.replace(re, function (match, p1, p2) {
-        obj[p1] = p2
-    })
+//    url.replace(re, function (match, p1, p2) {
+//        obj[p1] = p2
+//    })
+    let arr
+    while( (arr = re.exec(url)) != null ) {
+        obj[arr[1]] = arr[2]
+    }
+
     return obj
 }
 export { formateTime, translateUrl }
