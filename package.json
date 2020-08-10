@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc -b tsconfig.json && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/lqfxz520/myNpm/issues"
   },
-  "homepage": "https://github.com/lqfxz520/myNpm#readme"
+  "homepage": "https://github.com/lqfxz520/myNpm#readme",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
 }

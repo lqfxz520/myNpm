@@ -1,7 +1,12 @@
 const reg:RegExp = /(YY(?:YY)?|M{2,2}|D{1,2}|d{1,2}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|S{1,3})/g
 
 function formateTime(timeStamp:(string | Date | number), template:string = 'YYYY-MM-DD') {
-    const dateObj:Date = new Date(timeStamp)
+    let dateObj:Date
+    if(typeof timeStamp === 'string' || typeof timeStamp === 'number') {
+        dateObj = new Date(timeStamp)
+    } else {
+        dateObj = timeStamp
+    }
     const translation = template.replace(reg, function (match) {
         // console.log(match)
         let temp = String(translateCase(match, dateObj))
@@ -11,7 +16,7 @@ function formateTime(timeStamp:(string | Date | number), template:string = 'YYYY
             let str = ''
             for (let i = 0; i < len; i++) str += '0'
             temp = str + temp
-        } else if (len < 0 && match.includes('Y')) {
+        } else if (len < 0 && match.indexOf('Y')) {
             temp = temp.slice(len)
         }
         return temp
@@ -20,7 +25,7 @@ function formateTime(timeStamp:(string | Date | number), template:string = 'YYYY
     return translation
 }
 
-function translateCase(s:string, dateObj:Date) {
+function translateCase(s:string, dateObj:Date):number|string {
     let timeValue:number|string
     switch (s) {
         case 'YY':
